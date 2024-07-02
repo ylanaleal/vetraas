@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get "/consulta_marcada", to: "pages#confirmation", as: :confirmation
 
   get "/admin", to: "users#show", as: :user_profile
 

@@ -1,4 +1,5 @@
 <header>
+  <%# Options to admin %>
   <div class="d-flex">
     <h2>Todos os profissionais</h2>
     <h2>Adicionar profissional</h2>
@@ -6,10 +7,12 @@
 </header>
 
 <main>
+  <%# Checks if there's any doctor %>
   <% if @doctors %>
     <div>
       <% @doctors.each do |doctor| %>
         <div class="border border-primary mb-2">
+          <%# Doctor header %>
           <div class="d-flex">
             <h3><%= doctor.full_name %></h3>
             <%= link_to edit_doctor_path(doctor.id) do %>
@@ -17,6 +20,8 @@
             <% end %>
           </div>
           <p>Descrição: <%= doctor.description %></p>
+
+          <%# Doctors specialties details %>
           <h4>Especialidades</h4>
           <%= link_to 'Criar nova especialidade', new_specialty_path(doctor.id) %>
           <% if doctor.specialties != [] %>
@@ -31,14 +36,14 @@
                   turbo_confirm: "Você tem certeza?" } do %>
                   <i class="fa-regular fa-trash-can"></i>
                 <% end %>
-                <p>-- Tipo: <%= object[:consultation_title].title %> -- </p>
-                <p>-- Valor: <%= object[:value] %></p>
+                <p>-- Consulta: <%= object[:consultation_title].title %> -- </p>
+                <p>-- Preço da consulta: <%= object[:value] %></p>
                 <%= link_to edit_consultation_fee_path(doctor.id, object[:specialty].id, object[:consultation_title].id) do %>
                   <i class="fa-regular fa-pen-to-square"></i>
                 <% end %>
-                <% if object[:consultation_title] %>
+                <%# if object[:consultation_title] %>
                   <%= link_to 'Adicionar nova taxa', new_consultation_fee_path(doctor.id, object[:specialty].id) %>
-                <% end %>
+                <%# end %>
               </div>
             <% end %>
           <% end %>
@@ -47,6 +52,7 @@
     </div>
   <% end %>
 
+  <%# Form to add new doctor %>
   <div>
     <%= render 'shared/doctor_form' %>
   </div>

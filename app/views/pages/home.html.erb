@@ -1,2 +1,40 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<header>
+  <div>
+    <h2>Bem-vindo!</h2>
+    <p>Agende sua consulta conosco, confira nossos <strong>profissionais</strong> e <strong>especialidades</strong></p>
+  </div>
+</header>
+
+<%= link_to 'Teste', confirmation_path %>
+
+<main>
+  <% if @doctors %>
+    <div>
+      <% @doctors.each do |doctor| %>
+        <div class="border border-primary mb-2">
+          <%# Doctor header %>
+          <h3><%= doctor.full_name %></h3>
+          <p>Descrição: <%= doctor.description %></p>
+
+          <%# Doctors specialties details %>
+          <h4>Especialidades</h4>
+          <% if doctor.specialties != [] %>
+            <% doctor.formatted_consultation_titles_and_values.each do |object| %>
+              <div class="border">
+                <p><%= object[:specialty].title %></p>
+                <hr>
+                <p>Consulta: <%= object[:consultation_title].title %></p>
+                <p>Preço da consulta: <%= object[:value] %></p>
+              </div>
+            <% end %>
+          <% end %>
+
+          <%# Link to schedule appoitment %>
+          <button class="btn btn-dark rounded-3 ms-3 " onclick="Calendly.showPopupWidget('https://calendly.com/vetraas-especialidades/vivian-pedrinelli');return false;">
+            Agendar consulta
+          </button>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</main>
