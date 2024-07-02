@@ -1,0 +1,16 @@
+<%= simple_form_for [@doctor, @specialty] do |f| %>
+  <div class="form-inputs scroll-form">
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <%= f.input :title, label: 'Especialidade' %>
+  </div>
+
+  <div class="form-actions mb-4">
+    <%= f.submit "Confirmar", class: "w-100 btn btn-dark shadow-sm rounded-3", name: "confirm" %>
+    <% if controller_name == 'specialties' && action_name == 'edit' %>
+      <%= f.submit "Salvar e criar nova taxa", class: "w-100 btn btn-dark shadow-sm rounded-3", name: "confirm_and_create_new_fee" %>
+    <% end %>
+    <%= link_to "Voltar", request.referer || user_profile_path, class: "flex-grow-1 w-100 btn btn-outline-primary shadow-sm p-text-sizing" %>
+  </div>
+<% end %>

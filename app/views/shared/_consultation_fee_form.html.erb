@@ -1,0 +1,18 @@
+<%= simple_form_for [@doctor, @specialty, @consultation_fee] do |f| %>
+  <div class="form-inputs scroll-form">
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <%= f.input :title, label: 'Tipo de consulta' %>
+    <%= f.input :value, label: 'Valor da consulta' %>
+  </div>
+
+  <div class="form-actions mb-4">
+    <%# if controller_name != 'consultation_fees' && action_name == 'edit' %>
+      <%= f.submit "Salvar e criar nova especialidade", class: "w-100 btn btn-dark shadow-sm rounded-3", name: "save_and_create_specialty" %>
+      <%= f.submit "Salvar e criar nova taxa", class: "flex-grow-1 w-100 btn btn-outline-warning shadow-sm me-3", name: "save_and_create_fee" %>
+    <%# end %>
+    <%= f.submit "Salvar e finalizar", class: "flex-grow-1 w-100 btn btn-outline-warning shadow-sm me-3", name: "save_and_return" %>
+    <%= link_to "Voltar", user_profile_path, class: "flex-grow-1 w-100 btn btn-outline-primary shadow-sm p-text-sizing" %>
+  </div>
+<% end %>

@@ -1,2 +1,53 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<header>
+  <div class="d-flex">
+    <h2>Todos os profissionais</h2>
+    <h2>Adicionar profissional</h2>
+  </div>
+</header>
+
+<main>
+  <% if @doctors %>
+    <div>
+      <% @doctors.each do |doctor| %>
+        <div class="border border-primary mb-2">
+          <div class="d-flex">
+            <h3><%= doctor.full_name %></h3>
+            <%= link_to edit_doctor_path(doctor.id) do %>
+              <i class="fa-regular fa-pen-to-square"></i>
+            <% end %>
+          </div>
+          <p>Descrição: <%= doctor.description %></p>
+          <h4>Especialidades</h4>
+          <%= link_to 'Criar nova especialidade', new_specialty_path(doctor.id) %>
+          <% if doctor.specialties != [] %>
+            <% doctor.formatted_consultation_titles_and_values.each do |object| %>
+              <div class="d-flex border">
+                <p>Especialidade: <%= object[:specialty].title %></p>
+                <%= link_to edit_specialty_path(doctor.id, object[:specialty].id) do %>
+                  <i class="fa-regular fa-pen-to-square"></i>
+                <% end %>
+                <%= link_to specialty_path(doctor.id, object[:specialty].id),
+                  data: { turbo_method: :delete,
+                  turbo_confirm: "Você tem certeza?" } do %>
+                  <i class="fa-regular fa-trash-can"></i>
+                <% end %>
+                <p>-- Tipo: <%= object[:consultation_title].title %> -- </p>
+                <p>-- Valor: <%= object[:value] %></p>
+                <%= link_to edit_consultation_fee_path(doctor.id, object[:specialty].id, object[:consultation_title].id) do %>
+                  <i class="fa-regular fa-pen-to-square"></i>
+                <% end %>
+                <% if object[:consultation_title] %>
+                  <%= link_to 'Adicionar nova taxa', new_consultation_fee_path(doctor.id, object[:specialty].id) %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= render 'shared/doctor_form' %>
+  </div>
+</main>
