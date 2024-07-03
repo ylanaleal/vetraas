@@ -18,8 +18,14 @@
             <%= link_to edit_doctor_path(doctor.id) do %>
               <i class="fa-regular fa-pen-to-square"></i>
             <% end %>
+            <%= link_to doctor_path(doctor.id),
+                data: { turbo_method: :delete,
+                turbo_confirm: "Você tem certeza?" } do %>
+                <i class="fa-regular fa-trash-can"></i>
+            <% end %>
           </div>
           <p>Descrição: <%= doctor.description %></p>
+          <p>Link: <%= doctor.link %></p>
 
           <%# Doctors specialties details %>
           <h4>Especialidades</h4>
@@ -40,6 +46,11 @@
                 <p>-- Preço da consulta: <%= object[:value] %></p>
                 <%= link_to edit_consultation_fee_path(doctor.id, object[:specialty].id, object[:consultation_title].id) do %>
                   <i class="fa-regular fa-pen-to-square"></i>
+                <% end %>
+                <%= link_to consultation_fee_path(doctor.id, object[:specialty].id, object[:consultation_title].id),
+                  data: { turbo_method: :delete,
+                  turbo_confirm: "Você tem certeza?" } do %>
+                  <i class="fa-regular fa-trash-can"></i>
                 <% end %>
                 <%# if object[:consultation_title] %>
                   <%= link_to 'Adicionar nova taxa', new_consultation_fee_path(doctor.id, object[:specialty].id) %>

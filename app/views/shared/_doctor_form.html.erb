@@ -6,14 +6,15 @@
     <%= f.input :first_name, label: 'Nome do(a) veterinário(a)' %>
     <%= f.input :last_name, label: 'Sobrenome do(a) veterinário(a)' %>
     <%= f.input :description, label: 'Descrição do(a) veterinário(a)' %>
+    <%= f.input :link, label: 'Link para marcação da consulta' %>
   </div>
 
   <div class="form-actions mb-4">
     <% if controller_name == 'doctors' && action_name == 'edit' %>
-      <%= f.submit "Salvar", class: "w-100 btn btn-dark shadow-sm rounded-3" %>
-      <%= link_to 'Voltar', user_profile_path %>
+      <%= f.submit "Salvar", class: "btn btn-dark shadow-sm rounded-3" %>
+      <%= link_to 'Voltar', user_profile_path, class: "btn btn-dark shadow-sm rounded-3" %>
     <% else %>
-      <%= f.submit "Adicionar e preencher especialidades", class: "w-100 btn btn-dark shadow-sm rounded-3" %>
+      <%= f.submit "Adicionar e preencher especialidades", class: "btn btn-dark shadow-sm rounded-3" %>
     <% end %>
 
   </div>

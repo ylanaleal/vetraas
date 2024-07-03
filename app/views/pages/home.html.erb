@@ -5,8 +5,6 @@
   </div>
 </header>
 
-<%= link_to 'Teste', confirmation_path %>
-
 <main>
   <% if @doctors %>
     <div>
@@ -30,7 +28,10 @@
           <% end %>
 
           <%# Link to schedule appoitment %>
-          <button class="btn btn-dark rounded-3 ms-3 " onclick="Calendly.showPopupWidget('https://calendly.com/vetraas-especialidades/vivian-pedrinelli');return false;">
+          <button class="btn btn-dark rounded-3 ms-3" onclick='Calendly.showPopupWidget("https://calendly.com/vetraas-especialidades/<%= doctor.link_name %>");return false;'>
+            Agendar consulta
+          </button>
+          <button class="btn btn-dark rounded-3 ms-3" onclick='Calendly.showPopupWidget("<%= doctor.link %>");return false;'>
             Agendar consulta
           </button>
         </div>

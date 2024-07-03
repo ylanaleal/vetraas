@@ -7,10 +7,10 @@
   </div>
 
   <div class="form-actions mb-4">
-    <%= f.submit "Confirmar", class: "w-100 btn btn-dark shadow-sm rounded-3", name: "confirm" %>
-    <% if controller_name == 'specialties' && action_name == 'edit' %>
-      <%= f.submit "Salvar e criar nova taxa", class: "w-100 btn btn-dark shadow-sm rounded-3", name: "confirm_and_create_new_fee" %>
+    <%= f.submit "Confirmar", class: "btn btn-dark shadow-sm rounded-3", name: "confirm" %>
+    <% if controller_name == 'specialties' && action_name != 'edit' %>
+      <%= f.submit "Salvar e criar nova taxa", class: "btn btn-dark shadow-sm rounded-3", name: "confirm_and_create_new_fee" %>
     <% end %>
-    <%= link_to "Voltar", request.referer || user_profile_path, class: "flex-grow-1 w-100 btn btn-outline-primary shadow-sm p-text-sizing" %>
+    <%= link_to "Voltar", user_profile_path, class: "btn btn-dark shadow-sm p-text-sizing" %>
   </div>
 <% end %>

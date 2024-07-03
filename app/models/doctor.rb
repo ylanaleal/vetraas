@@ -4,10 +4,14 @@ class Doctor < ApplicationRecord
   has_many :specialties, dependent: :destroy
   has_many :consultation_fees, through: :specialties
 
-  validates :first_name, :last_name, :description, presence: true
+  validates :first_name, :last_name, :description, :link, presence: true
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def link_name
+    "#{first_name.downcase}-#{last_name.downcase}"
   end
 
   def formatted_consultation_titles_and_values
@@ -19,12 +23,4 @@ class Doctor < ApplicationRecord
       }
     end
   end
-
-  # def specialties_without_consultation_fees
-  #   specialties.where.not(id: consultation_fees.ids)
-  # end
-
-  # def teste(specialty_id)
-  #   specialties.find(specialty_id).consultation_fees
-  # end
 end
