@@ -9,7 +9,7 @@ class DoctorsController < ApplicationController
   def create
     @doctor = Doctor.new(doctor_params)
     if @doctor.save
-      redirect_to doctors_path
+      redirect_to new_specialty_path(@doctor), notice: 'Médico criado com sucesso.'
     else
       render :new
     end
@@ -20,7 +20,7 @@ class DoctorsController < ApplicationController
 
   def update
     if @doctor.update(doctor_params)
-      redirect_to doctors_path
+      redirect_to user_profile_path, notice: 'Médico atualizado com sucesso.'
     else
       render :edit
     end
@@ -28,7 +28,7 @@ class DoctorsController < ApplicationController
 
   def destroy
     @doctor.destroy
-    redirect_to doctors_path
+    redirect_to user_profile_path, notice: 'Médico excluído com sucesso.'
   end
 
   private
@@ -38,6 +38,6 @@ class DoctorsController < ApplicationController
   end
 
   def doctor_params
-    params.require(:doctor).permit(:first_name, :last_name, :speciality, :value, :description)
+    params.require(:doctor).permit(:first_name, :last_name, :description, :link)
   end
 end

@@ -1,0 +1,20 @@
+<%= simple_form_for(@doctor) do |f| %>
+  <div class="form-inputs scroll-form">
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <%= f.input :first_name, label: 'Nome do(a) veterinário(a)' %>
+    <%= f.input :last_name, label: 'Sobrenome do(a) veterinário(a)' %>
+    <%= f.input :description, label: 'Descrição do(a) veterinário(a)' %>
+  </div>
+
+  <div class="form-actions mb-4">
+    <% if controller_name == 'doctors' && action_name == 'edit' %>
+      <%= f.submit "Salvar", class: "btn btn-dark shadow-sm rounded-3" %>
+      <%= link_to 'Voltar', user_profile_path, class: "btn btn-dark shadow-sm rounded-3" %>
+    <% else %>
+      <%= f.submit "Adicionar e preencher especialidades", class: "btn btn-dark shadow-sm rounded-3" %>
+    <% end %>
+
+  </div>
+<% end %>
