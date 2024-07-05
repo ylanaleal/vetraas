@@ -12,6 +12,7 @@
     <div>
       <% @doctors.each do |doctor| %>
         <div class="border border-primary mb-2">
+
           <%# Doctor header %>
           <div class="d-flex">
             <h3><%= doctor.full_name %></h3>
@@ -24,39 +25,46 @@
                 <i class="fa-regular fa-trash-can"></i>
             <% end %>
           </div>
+          <p>Formato para o calendly: <%= doctor.link_name %></p>
           <p>Descrição: <%= doctor.description %></p>
-          <p>Link: <%= doctor.link %></p>
 
-          <%# Doctors specialties details %>
+          <%# Doctors new specialty %>
           <h4>Especialidades</h4>
           <%= link_to 'Criar nova especialidade', new_specialty_path(doctor.id) %>
-          <% if doctor.specialties != [] %>
-            <% doctor.formatted_consultation_titles_and_values.each do |object| %>
-              <div class="d-flex border">
-                <p>Especialidade: <%= object[:specialty].title %></p>
-                <%= link_to edit_specialty_path(doctor.id, object[:specialty].id) do %>
-                  <i class="fa-regular fa-pen-to-square"></i>
-                <% end %>
-                <%= link_to specialty_path(doctor.id, object[:specialty].id),
-                  data: { turbo_method: :delete,
-                  turbo_confirm: "Você tem certeza?" } do %>
-                  <i class="fa-regular fa-trash-can"></i>
-                <% end %>
-                <p>-- Consulta: <%= object[:consultation_title].title %> -- </p>
-                <p>-- Preço da consulta: <%= object[:value] %></p>
-                <%= link_to edit_consultation_fee_path(doctor.id, object[:specialty].id, object[:consultation_title].id) do %>
-                  <i class="fa-regular fa-pen-to-square"></i>
-                <% end %>
-                <%= link_to consultation_fee_path(doctor.id, object[:specialty].id, object[:consultation_title].id),
-                  data: { turbo_method: :delete,
-                  turbo_confirm: "Você tem certeza?" } do %>
-                  <i class="fa-regular fa-trash-can"></i>
-                <% end %>
-                <%# if object[:consultation_title] %>
-                  <%= link_to 'Adicionar nova taxa', new_consultation_fee_path(doctor.id, object[:specialty].id) %>
-                <%# end %>
+
+          <% if doctor.specialties != [] && doctor.specialties.count > 1 %>
+            <% doctor.specialties.each do |specialty| %>
+              <div class="border">
+                <div class="d-flex">
+                  <p class="mb-0"><%= specialty.title %></p>
+                  <%= link_to edit_specialty_path(doctor.id, specialty.id) do %>
+                    <i class="fa-regular fa-pen-to-square"></i>
+                  <% end %>
+                  <%= link_to specialty_path(doctor.id, specialty.id),
+                    data: { turbo_method: :delete,
+                    turbo_confirm: "Você tem certeza?" } do %>
+                    <i class="fa-regular fa-trash-can"></i>
+                  <% end %>
+                </div>
+                <p>Preço da consulta: <%= specialty.formatted_value %></p>
               </div>
             <% end %>
+            
+          <% elsif doctor.specialties != [] && doctor.specialties.count == 1 %>
+            <div class="border">
+              <div class="d-flex">
+                <p class="mb-0"><%= doctor.specialties.first.title %></p>
+                <%= link_to edit_specialty_path(doctor.id, doctor.specialties.first.id) do %>
+                  <i class="fa-regular fa-pen-to-square"></i>
+                <% end %>
+                <%= link_to specialty_path(doctor.id, doctor.specialties.first.id),
+                  data: { turbo_method: :delete,
+                  turbo_confirm: "Você tem certeza?" } do %>
+                  <i class="fa-regular fa-trash-can"></i>
+                <% end %>
+              </div>
+              <p>Preço da consulta: <%= doctor.specialties.first.formatted_value %></p>
+            </div>
           <% end %>
         </div>
       <% end %>

@@ -2,25 +2,19 @@ class Doctor < ApplicationRecord
   include ActionView::Helpers::NumberHelper
 
   has_many :specialties, dependent: :destroy
-  has_many :consultation_fees, through: :specialties
 
-  validates :first_name, :last_name, :description, :link, presence: true
+  validates :first_name, :last_name, :description, presence: true
 
   def full_name
-    "#{first_name} #{last_name}"
+    "#{first_name.strip.capitalize} #{last_name.strip.capitalize}"
   end
 
   def link_name
-    "#{first_name.downcase}-#{last_name.downcase}"
+    join_name = full_name.split.join("-").downcase
+    return join_name
   end
 
-  def formatted_consultation_titles_and_values
-    consultation_fees.where(specialty_id: specialties.ids).map do |consultation_fee|
-      {
-        consultation_title: consultation_fee,
-        value: number_to_currency(consultation_fee.value),
-        specialty: consultation_fee.specialty
-      }
-    end
+  def specialties_join
+    specialties.map(&:title).join(", ").strip
   end
 end

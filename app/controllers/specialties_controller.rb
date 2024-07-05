@@ -10,23 +10,11 @@ class SpecialtiesController < ApplicationController
     @specialty = Specialty.new(specialty_params)
     @specialty.doctor_id = params[:doctor_id]
 
-    # if @specialty.save
-    #   redirect_to new_consultation_fee_path(params[:doctor_id], @specialty), notice: 'Especialidade criada com sucesso.'
-    # else
-    #   render :new
-    # end
-
     respond_to do |format|
       if params[:confirm].present? && @specialty.save!
-        @consultation_fee = ConsultationFee.new
-        @consultation_fee.specialty_id = @specialty.id
-        @consultation_fee.save!
-        format.html { redirect_to user_profile_path, notice: 'Especialidade atualizada com sucesso.' }
-      elsif params[:confirm_and_create_new_fee].present? && @specialty.save!
-        @consultation_fee = ConsultationFee.new
-        @consultation_fee.specialty_id = @specialty.id
-        @consultation_fee.save!
-        format.html { redirect_to edit_consultation_fee_path(@specialty.doctor_id, @specialty.id, @consultation_fee.id), notice: 'Especialidade criada com sucesso.' }
+        format.html { redirect_to user_profile_path, notice: 'Especialidade criada com sucesso.' }
+      elsif params[:confirm_and_create_new_specialty].present? && @specialty.save!
+        format.html { redirect_to new_specialty_path(params[:doctor_id]), notice: 'Especialidade criada com sucesso.' }
       else
         format.html { render :new }
       end
@@ -56,6 +44,6 @@ class SpecialtiesController < ApplicationController
   end
 
   def specialty_params
-    params.require(:specialty).permit(:title)
+    params.require(:specialty).permit(:title, :value)
   end
 end

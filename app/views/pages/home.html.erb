@@ -16,24 +16,24 @@
 
           <%# Doctors specialties details %>
           <h4>Especialidades</h4>
-          <% if doctor.specialties != [] %>
-            <% doctor.formatted_consultation_titles_and_values.each do |object| %>
+          <p><%= doctor.specialties_join %></p>
+          <% if doctor.specialties != [] && doctor.specialties.count > 1 %>
+            <% doctor.specialties.each do |specialty| %>
               <div class="border">
-                <p><%= object[:specialty].title %></p>
-                <hr>
-                <p>Consulta: <%= object[:consultation_title].title %></p>
-                <p>Preço da consulta: <%= object[:value] %></p>
+                <p>Preço da consulta de <%= specialty.title %>: <%= specialty.formatted_value %></p>
               </div>
             <% end %>
+          <% elsif doctor.specialties != [] && doctor.specialties.count == 1 %>
+            <div class="border">
+              <p>Preço da consulta: <%= doctor.specialties.first.formatted_value %></p>
+            </div>
           <% end %>
 
           <%# Link to schedule appoitment %>
           <button class="btn btn-dark rounded-3 ms-3" onclick='Calendly.showPopupWidget("https://calendly.com/vetraas-especialidades/<%= doctor.link_name %>");return false;'>
             Agendar consulta
           </button>
-          <button class="btn btn-dark rounded-3 ms-3" onclick='Calendly.showPopupWidget("<%= doctor.link %>");return false;'>
-            Agendar consulta
-          </button>
+
         </div>
       <% end %>
     </div>

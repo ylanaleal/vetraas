@@ -1,6 +1,12 @@
 class Specialty < ApplicationRecord
-  belongs_to :doctor
-  has_many :consultation_fees, dependent: :destroy
+  include ActionView::Helpers::NumberHelper
 
-  validates :title, presence: true
+  belongs_to :doctor
+
+  validates :title, :value, presence: true
+  validates :value, numericality: { greater_than: 0 }
+
+  def formatted_value
+    number_to_currency(value)
+  end
 end
