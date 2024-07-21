@@ -8,7 +8,6 @@
     border-width: 1px;
     border-color: $bg-dark;
     border-radius: 8px;
-
     margin-bottom: 20px;
     padding: 20px;
   }
@@ -47,12 +46,22 @@
     margin-top: 4px;
   }
 
-  .btn {
+  .btn-vet{
     font-family: $body-font;
     font-weight: 400;
     font-size: 0.80rem;
     background-color: $bg-dark;
     width: 100%;
+    &:hover {
+      background-color: #61687e;
+    }
+  }
+
+  .btn-vet-outline {
+    font-family: $body-font;
+    font-weight: 400;
+    font-size: 0.70rem;
+    background-color: $bg-color;
     &:hover {
       background-color: #61687e;
     }

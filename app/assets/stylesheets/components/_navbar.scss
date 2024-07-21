@@ -59,3 +59,23 @@
   font-size: 0.85rem;
   color: $light-gray;
 }
+
+//navbar admin
+.nav-admin {
+  font-family: $body-font;
+  font-weight: 300;
+  font-size: 0.90rem;
+  color: $bg-dark;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+
+  .navbar-brand img {
+    width: 100px;
+  }
+
+  .logout {
+    text-decoration: none;
+    color: $bg-dark;
+  }
+}

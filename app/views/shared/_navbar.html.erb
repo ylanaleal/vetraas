@@ -1,28 +1,25 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon p-0 m-0">
+  <% if controller_name == 'users' %>
 
-  <div class="nav-info d-flex flex-column py-auto">
+  <div class="nav-admin d-flex justify-content-between">
     <%= link_to "/", class: "navbar-brand mb-3" do %>
       <%= image_tag "vetraas-logo-big.jpg" %>
     <% end %>
 
-    <h1 class="title">Agende sua consulta</h1>
-    <p class="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate ut laoreet velit ma.</p>
+    <% if user_signed_in? %>
+      <%= link_to "Sair", destroy_user_session_path, data: {turbo_method: :delete}, class: "logout" %>
+    <% end %>
   </div>
 
-  <% if controller_name == 'users' %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
+  <% else %>
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon p-0 m-0">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Sair", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-          </li>
+      <div class="nav-info d-flex flex-column py-auto">
+        <%= link_to "/", class: "navbar-brand mb-3" do %>
+          <%= image_tag "vetraas-logo-big.jpg" %>
         <% end %>
-      </ul>
+
+        <h1 class="title">Agende sua consulta</h1>
+        <p class="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate ut laoreet velit ma.</p>
+      </div>
     </div>
   <% end %>
-
-</div>
