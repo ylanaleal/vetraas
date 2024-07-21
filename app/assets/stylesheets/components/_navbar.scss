@@ -1,7 +1,31 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #353945;
-  color: white;
+  background: $bg-dark;
+
+  // Extra small devices (portrait phones, less than 576px)
+  @media (max-width: 575.98px) {
+    height: 220px;
+  }
+
+  // Small devices (phones, 540px and up)
+  @media (min-width: 540px) {
+    height: 220px;
+  }
+
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    height: 220px;
+  }
+
+  // Large devices (desktops, 992px and up)
+  @media (min-width: 992px) {
+    height: 415px;
+  }
+
+  // Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) {
+    height: 415px;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,5 +33,29 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 180px;
+}
+
+.nav-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  color: $light-gray;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.title {
+  font-family: $title-font;
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: $light-gray;
+}
+
+.body {
+  font-family: $body-font;
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: $light-gray;
 }

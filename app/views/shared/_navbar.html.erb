@@ -1,11 +1,17 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to "/", class: "navbar-brand" do %>
-      <%= image_tag "Leão logo" %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon p-0 m-0">
+
+  <div class="nav-info d-flex flex-column py-auto">
+    <%= link_to "/", class: "navbar-brand mb-3" do %>
+      <%= image_tag "vetraas-logo-big.jpg" %>
     <% end %>
 
+    <h1 class="title">Agende sua consulta</h1>
+    <p class="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate ut laoreet velit ma.</p>
+  </div>
+
+  <% if controller_name == 'users' %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -17,5 +23,6 @@
         <% end %>
       </ul>
     </div>
-  </div>
+  <% end %>
+
 </div>
