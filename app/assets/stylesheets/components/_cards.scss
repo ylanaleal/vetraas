@@ -1,0 +1,22 @@
+.div-cards {
+  padding-left: 40px;
+  padding-right: 40px;
+
+  .cards {
+    background: transparent;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $bg-dark;
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+
+  h3 {
+    font-family: $title-font;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: $gray;
+  }
+}

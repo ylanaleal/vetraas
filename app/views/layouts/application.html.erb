@@ -18,10 +18,12 @@
 
   <body>
     <%# <%= render "shared/navbar" if controller_name == 'users' %>
-    <%= render "shared/navbar"%>
-    <%= render "shared/flashes" %>
-    <div class="container">
+    <div class="page-container">
+      <%= render "shared/navbar"%>
       <%= yield %>
     </div>
+
+    <%= render "shared/flashes" %>
   </body>
+
 </html>
