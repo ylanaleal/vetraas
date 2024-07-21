@@ -11,36 +11,46 @@
         <div>
           <% @doctors.each do |doctor| %>
             <div class="cards">
-              <%# Doctor avatar %>
-              <% if doctor.photo.attached? %>
-                <%= cl_image_tag adoctor.photo.key, width: 240, height: 240, crop: :fill %>
-              <% else %>
-                <%= image_tag "vetraas-logo.jpg", width: 240, height: 240 %>
-              <% end %>
 
-              <%# Doctor header %>
-              <h3><%= doctor.full_name %></h3>
-              <p>Descrição: <%= doctor.description %></p>
+              <div class="info-cards">
+                <div class="photo-name d-flex align-items-center">
+                  <%# Doctor avatar %>
+                  <% if doctor.photo.attached? %>
+                    <%= cl_image_tag doctor.photo.key, crop: :fill, class: "avatar" %>
+                  <% else %>
+                    <%= image_tag "vetraas-logo.jpg", class: "avatar" %>
+                  <% end %>
 
-              <%# Doctors specialties details %>
-              <h4>Especialidades</h4>
-              <p><%= doctor.specialties_join %></p>
-              <% if doctor.specialties != [] && doctor.specialties.count > 1 %>
-                <% doctor.specialties.each do |specialty| %>
-                  <div class="border">
-                    <p>Preço da consulta de <%= specialty.title %>: <%= specialty.formatted_value %></p>
+                  <div class="specialty d-flex flex-column ms-2">
+                    <%# Doctor header %>
+                    <h3 class="mb-0"><%= doctor.full_name %></h3>
+
+                    <%# Doctors specialties details %>
+                    <%# <h4>Especialidades</h4> %>
+                    <p class="mb-1"><%= doctor.specialties_join %></p>
                   </div>
-                <% end %>
-              <% elsif doctor.specialties != [] && doctor.specialties.count == 1 %>
-                <div class="border">
-                  <p>Preço da consulta: <%= doctor.specialties.first.formatted_value %></p>
                 </div>
-              <% end %>
 
-              <%# Link to schedule appoitment %>
-              <button class="btn btn-dark rounded-3 ms-3" onclick='Calendly.showPopupWidget("https://calendly.com/vetraas-especialidades/<%= doctor.link_name %>");return false;'>
-                Agendar consulta
-              </button>
+                <div class="price mt-2">
+                  <% if doctor.specialties != [] && doctor.specialties.count > 1 %>
+                    <% doctor.specialties.each do |specialty| %>
+                        <p>Preço da consulta de <%= specialty.title %>: <%= specialty.formatted_value %></p>
+                    <% end %>
+                  <% elsif doctor.specialties != [] && doctor.specialties.count == 1 %>
+
+                    <div>
+                      <p>Preço da consulta: <%= doctor.specialties.first.formatted_value %></p>
+                    </div>
+                  <% end %>
+                </div>
+
+                <div>
+                  <%# Link to schedule appoitment %>
+                  <button class="btn btn-dark rounded-4" onclick='Calendly.showPopupWidget("https://calendly.com/vetraas-especialidades/<%= doctor.link_name %>");return false;'>
+                    Agendar consulta
+                  </button>
+                </div>
+              </div>
 
             </div>
           <% end %>
