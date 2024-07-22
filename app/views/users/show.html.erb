@@ -1,93 +1,21 @@
-<header>
-  <%# Options to admin %>
-  <div class="d-flex">
-    <h2>Todos os profissionais</h2>
-    <h2>Adicionar profissional</h2>
+<div data-controller="show-users">
+  <!-- Options to admin -->
+  <div class="menu d-flex mt-3">
+    <button class="btn-nodecoration" id="show-btn" data-action="click->show-users#show">
+      <h2>Todos os profissionais</h2>
+    </button>
+
+    <button class="btn-nodecoration" id="new-btn" data-action="click->show-users#new">
+      <h2>Adicionar profissional</h2>
+    </button>
   </div>
-</header>
 
-<main>
-<div class="div-cards pt-3">
-  <%# Checks if there's any doctor %>
-  <% if @doctors %>
-    <div>
-      <% @doctors.each do |doctor| %>
-        <div class="cards">
+  <div data-show-users-target="newElement" class="d-none">
+    <%= render 'users/new', doctor: @doctor %>
+  </div>
 
-          <div class="info-cards">
-            <%# Doctor header %>
-            <div class="d-flex">
-              <h3><%= doctor.full_name %></h3>
-              <%= link_to edit_doctor_path(doctor.id) do %>
-                <i class="fa-regular fa-pen-to-square"></i>
-              <% end %>
-              <%= link_to doctor_path(doctor.id),
-                  data: { turbo_method: :delete,
-                  turbo_confirm: "Você tem certeza?" } do %>
-                  <i class="fa-regular fa-trash-can"></i>
-              <% end %>
-            </div>
-            <p>Formato para o calendly: <%= doctor.link_name %></p>
-            <p>Descrição: <%= doctor.description %></p>
+  <div data-show-users-target="showElement">
+    <%= render 'users/user_show', doctors: @doctors %>
+  </div>
 
-            <%# Doctors new specialty %>
-            <%# <h4>Especialidades</h4> %>
-
-            <% if doctor.specialties != [] && doctor.specialties.count > 1 %>
-              <% doctor.specialties.each do |specialty| %>
-                <div class="specialty">
-                  <div class="d-flex">
-                    <p class="mb-0"><%= specialty.title %></p>
-
-                    <%= link_to new_specialty_path(doctor.id) do %>
-                      <i class="fa-regular fa-plus"></i>
-                    <% end %>
-
-                    <%= link_to edit_specialty_path(doctor.id, specialty.id) do %>
-                      <i class="fa-regular fa-pen-to-square"></i>
-                    <% end %>
-
-                    <%= link_to specialty_path(doctor.id, specialty.id),
-                      data: { turbo_method: :delete,
-                      turbo_confirm: "Você tem certeza?" } do %>
-                      <i class="fa-regular fa-trash-can"></i>
-                    <% end %>
-
-                  </div>
-
-                  <p>Preço da consulta: <%= specialty.formatted_value %></p>
-                </div>
-              <% end %>
-
-            <% elsif doctor.specialties != [] && doctor.specialties.count == 1 %>
-              <div class="specialty">
-                <div class="d-flex">
-                  <p class="mb-0"><%= doctor.specialties.first.title %></p>
-
-                  <%= link_to new_specialty_path(doctor.id) do %>
-                    <i class="fa-regular fa-plus"></i>
-                  <% end %>
-
-                  <%= link_to edit_specialty_path(doctor.id, doctor.specialties.first.id) do %>
-                    <i class="fa-regular fa-pen-to-square"></i>
-                  <% end %>
-
-                  <%= link_to specialty_path(doctor.id, doctor.specialties.first.id),
-                    data: { turbo_method: :delete,
-                    turbo_confirm: "Você tem certeza?" } do %>
-                    <i class="fa-regular fa-trash-can"></i>
-                  <% end %>
-
-                </div>
-                <p>Preço da consulta: <%= doctor.specialties.first.formatted_value %></p>
-              </div>
-            <% end %>
-          </div>
-        </div>
-
-      <% end %>
-    </div>
-  <% end %>
-<div>
-
-</main>
+</div>

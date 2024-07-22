@@ -1,13 +1,13 @@
-  <% if controller_name == 'users' %>
+  <% if user_signed_in? %>
 
   <div class="nav-admin d-flex justify-content-between">
     <%= link_to "/", class: "navbar-brand mb-3" do %>
       <%= image_tag "vetraas-logo-big.jpg" %>
     <% end %>
 
-    <% if user_signed_in? %>
+    <%# <% if user_signed_in? %>
       <%= link_to "Sair", destroy_user_session_path, data: {turbo_method: :delete}, class: "logout" %>
-    <% end %>
+    <%# <% end %>
   </div>
 
   <% else %>

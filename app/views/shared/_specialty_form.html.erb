@@ -1,17 +1,30 @@
-<%= simple_form_for [@doctor, @specialty] do |f| %>
-  <div class="form-inputs scroll-form">
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<!-- Options to admin -->
+  <div class="menu d-flex mt-3">
+    <button class="btn-nodecoration" id="show-btn" data-action="click->show-users#show">
+      <h2>Todos os profissionais</h2>
+    </button>
 
-    <%= f.input :title, label: 'Especialidade' %>
-    <%= f.input :value, label: 'Valor da consulta' %>
+    <button class="btn-nodecoration" id="new-btn" data-action="click->show-users#new">
+      <h2>Adicionar profissional</h2>
+    </button>
   </div>
 
-  <div class="form-actions mb-4">
-    <%= f.submit "Confirmar", class: "btn btn-dark shadow-sm rounded-3", name: "confirm" %>
-    <% if controller_name == 'specialties' && action_name != 'edit' %>
-      <%= f.submit "Confirmar e criar nova especialidade", class: "btn btn-dark shadow-sm rounded-3", name: "confirm_and_create_new_specialty" %>
-    <% end %>
-    <%= link_to "Voltar", user_profile_path, class: "btn btn-dark shadow-sm p-text-sizing" %>
-  </div>
-<% end %>
+<div class="form mt-5">
+  <%= simple_form_for [@doctor, @specialty] do |f| %>
+    <div class="form-inputs scroll-form">
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <%= f.input :title, label: 'Especialidade' %>
+      <%= f.input :value, label: 'Valor da consulta' %>
+    </div>
+
+    <div class="form-actions mb-4">
+      <%= f.submit "Confirmar", class: "btn-vet btn btn-dark rounded-4 mt-2", name: "confirm" %>
+      <% if controller_name == 'specialties' && action_name != 'edit' %>
+        <%= f.submit "Confirmar e criar nova especialidade", class: "btn-vet btn btn-dark rounded-4 mt-2", name: "confirm_and_create_new_specialty" %>
+      <% end %>
+      <%= link_to "Voltar", user_profile_path, class: "btn-vet-outline btn btn-dark rounded-4 mt-2" %>
+    </div>
+  <% end %>
+</div>
