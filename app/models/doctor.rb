@@ -5,6 +5,8 @@ class Doctor < ApplicationRecord
 
   validates :first_name, :last_name, :description, presence: true
 
+  has_one_attached :photo
+
   def full_name
     "#{first_name.strip.capitalize} #{last_name.strip.capitalize}"
   end

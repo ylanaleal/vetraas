@@ -1,0 +1,70 @@
+.div-cards {
+  padding-left: 40px;
+  padding-right: 40px;
+
+  .cards {
+    background: transparent;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $bg-dark;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+
+  h3 {
+    font-family: $title-font;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: $gray;
+  }
+
+  p {
+    font-family: $body-font;
+    font-size: 0.70rem;
+    font-weight: 400;
+    color: $gray;
+  }
+
+  .price p {
+    font-family: $body-font;
+    font-size: 0.70rem;
+    font-weight: 400;
+    color: $bg-dark;
+    margin-left: 58px;
+  }
+
+  .avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .specialty {
+    border-bottom: 0.3px solid $bg-dark;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .btn-vet{
+    font-family: $body-font;
+    font-weight: 400;
+    font-size: 0.80rem;
+    background-color: $bg-dark;
+    width: 100%;
+    &:hover {
+      background-color: #61687e;
+    }
+  }
+
+  .btn-vet-outline {
+    font-family: $body-font;
+    font-weight: 400;
+    font-size: 0.70rem;
+    background-color: $bg-color;
+    &:hover {
+      background-color: #61687e;
+    }
+  }
+
+}

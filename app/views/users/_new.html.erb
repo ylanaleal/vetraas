@@ -1,14 +1,4 @@
-<!-- Options to admin -->
-  <div class="menu d-flex mt-3">
-    <button class="btn-nodecoration" id="show-btn" data-action="click->show-users#show">
-      <h2>Todos os profissionais</h2>
-    </button>
-
-    <button class="btn-nodecoration" id="new-btn" data-action="click->show-users#new">
-      <h2>Adicionar profissional</h2>
-    </button>
-  </div>
-
+<%# Form to add new doctor %>
 <div class="form mt-5">
   <%= simple_form_for(@doctor) do |f| %>
     <div class="form-inputs scroll-form">
@@ -23,12 +13,11 @@
 
     <div class="form-actions mb-4">
       <% if controller_name == 'doctors' && action_name == 'edit' %>
-        <%= f.submit "Salvar", class: "btn-vet btn btn-dark rounded-4 mt-2" %>
-        <%= link_to 'Voltar', user_profile_path, class: "btn-vet-outline btn btn-dark rounded-4 mt-2" %>
+        <%= f.submit "Salvar", class: "btn btn-dark shadow-sm rounded-3" %>
+        <%= link_to 'Voltar', user_profile_path, class: "btn btn-dark shadow-sm rounded-3" %>
       <% else %>
-        <%= f.submit "Adicionar e preencher especialidades", class: "btn btn-dark shadow-sm rounded-3" %>
+        <%= f.submit "Adicionar e preencher especialidades", class: "btn-vet btn btn-dark rounded-4 mt-2" %>
       <% end %>
-
     </div>
   <% end %>
 </div>

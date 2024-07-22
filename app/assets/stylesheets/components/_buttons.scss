@@ -1,0 +1,10 @@
+.btn {
+  font-family: $body-font;
+  font-weight: 400;
+  font-size: 0.80rem;
+  background-color: $bg-dark;
+  width: 100%;
+  &:hover {
+    background-color: #61687e;
+  }
+}

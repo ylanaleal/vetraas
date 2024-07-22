@@ -1,0 +1,38 @@
+.confirmation-title .title {
+  font-family: $title-font;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: $gray;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.confirmation-title .body {
+  font-family: $body-font;
+  font-size: 0.90rem;
+  font-weight: 400;
+  color: $gray;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.confirmation-title .address{
+  font-family: $body-font;
+  font-size: 0.80rem;
+  font-weight: 400;
+  color: $gray;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.appointment-infos {
+  background-color: $bg-gray;
+  font-family: $body-font;
+  font-size: 0.80rem;
+  font-weight: 400;
+  color: $gray;
+  padding-top: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+  min-height: 50vh;
+}
