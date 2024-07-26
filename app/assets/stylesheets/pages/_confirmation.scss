@@ -1,7 +1,37 @@
+.confirmation {
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .btn-vet {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: $body-font;
+      font-weight: 400;
+      font-size: 14px;
+      background-color: $bg-dark;
+      &:hover {
+        background-color: #61687e;
+      }
+    }
+
+    .btn-confirmacao {
+      margin-top: 20px;
+    }
+  }
+
+}
+
 .confirmation-title .title {
   font-family: $title-font;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 24px;
   color: $gray;
   padding-left: 40px;
   padding-right: 40px;
@@ -9,7 +39,7 @@
 
 .confirmation-title .body {
   font-family: $body-font;
-  font-size: 0.90rem;
+  font-size: 14px;
   font-weight: 400;
   color: $gray;
   padding-left: 40px;
@@ -18,7 +48,7 @@
 
 .confirmation-title .address{
   font-family: $body-font;
-  font-size: 0.80rem;
+  font-size: 14px;
   font-weight: 400;
   color: $gray;
   padding-left: 40px;
@@ -28,11 +58,12 @@
 .appointment-infos {
   background-color: $bg-gray;
   font-family: $body-font;
-  font-size: 0.80rem;
+  font-size: 14px;
   font-weight: 400;
   color: $gray;
   padding-top: 30px;
   padding-left: 40px;
   padding-right: 40px;
   min-height: 50vh;
+
 }

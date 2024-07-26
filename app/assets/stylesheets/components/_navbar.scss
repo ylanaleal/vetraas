@@ -22,14 +22,19 @@
     height: 300px;
   }
 
-}
+  // Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) {
+    height: 300px;
+  }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 180px;
+   // Medium devices (tablets, 768px and up)
+   @media (min-width: 768px) {
+    width: 250px;
+  }
 }
 
 .nav-info {
@@ -40,11 +45,18 @@
   color: $light-gray;
   padding-left: 40px;
   padding-right: 40px;
-}
+
+   // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+ }
 
 .navbar .title {
   font-family: $title-font;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 22px; // Set the initial font size for smaller screens
 
   @media (min-width: 768px) {
