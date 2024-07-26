@@ -6,6 +6,11 @@
   color: $gray;
   padding-left: 40px;
   padding-right: 40px;
+
+  @media (min-width: 1200px) {
+    margin-left: 190px;
+    margin-right: 190px;
+  }
 }
 
 .home-title .body {
@@ -15,4 +20,9 @@
   color: $gray;
   padding-left: 40px;
   padding-right: 40px;
+
+  @media (min-width: 992px) {
+    margin-left: 190px;
+    margin-right: 190px;
+  }
 }
