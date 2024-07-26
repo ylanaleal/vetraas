@@ -1,50 +1,69 @@
-.icon {
-  font-size: 0.85rem;
-  color: $bg-dark;
-}
-
-.avatar-userview {
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-}
-
-.menu {
-  padding-left: 40px;
-  padding-right: 40px;
-  justify-content: space-between;
-  -webkit-box-shadow: 0 4px 6px -6px #222;
-  -moz-box-shadow: 0 4px 6px -6px #222;
-  box-shadow: 0 4px 6px -6px #222;
-
-  h2 {
-    font-family: $body-font;
-    font-weight: 600;
-    font-size: 0.80rem;
-    color: $gray;
+  .icon {
+    font-size: 14px;
+    color: $bg-dark;
   }
 
-  .btn-nodecoration {
-    text-decoration: none;
-    border: none;
-    background-color: $bg-color;
-    &:hover {
-      color: $bg-dark;
+  .avatar-userview {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
+
+  .menu {
+    padding-left: 40px;
+    padding-right: 40px;
+    justify-content: space-between;
+    -webkit-box-shadow: 0 4px 6px -6px #222;
+    -moz-box-shadow: 0 4px 6px -6px #222;
+    box-shadow: 0 4px 6px -6px #222;
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+      justify-content: center;
+    }
+
+    h2 {
+      font-family: $body-font;
+      font-weight: 600;
+      font-size: 14px;
+      color: $gray;
+
+      // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+      font-size: 16px;
+      margin-right: 80px;
+      margin-left: 80px;
+    }
+    }
+
+    .btn-nodecoration {
+      text-decoration: none;
+      border: none;
+      background-color: $bg-color;
+      &:hover {
+        color: $bg-dark;
+      }
     }
   }
-}
 
-.form {
+  .form {
   padding-left: 40px;
   padding-right: 40px;
   font-family: $body-font;
   font-weight: 600;
-  font-size: 0.80rem;
+  font-size: 14px;
+
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
     .btn-vet{
       font-family: $body-font;
       font-weight: 400;
-      font-size: 0.80rem;
+      font-size: 14px;
       background-color: $bg-dark;
       width: 100%;
       &:hover {
@@ -55,7 +74,7 @@
     .btn-vet-outline {
       font-family: $body-font;
       font-weight: 400;
-      font-size: 0.80rem;
+      font-size: 14px;
       background-color: $bg-color;
       color: $bg-dark;
       &:hover {
