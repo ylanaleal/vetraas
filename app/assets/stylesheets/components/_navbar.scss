@@ -19,12 +19,12 @@
 
   // Large devices (desktops, 992px and up)
   @media (min-width: 992px) {
-    height: 300px;
+    height: 280px;
   }
 
   // Extra large devices (large desktops, 1200px and up)
   @media (min-width: 1200px) {
-    height: 300px;
+    height: 280x;
   }
 
 }
@@ -54,6 +54,21 @@
   }
  }
 
+ h1 {
+  font-family: $title-font;
+  font-weight: 600;
+  font-size: 22px; // Set the initial font size for smaller screens
+
+  @media (min-width: 768px) {
+    font-size: 36px; // Change the font size for screens with a minimum width of 768px
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  color: $light-gray;
+ }
+
 .navbar .title {
   font-family: $title-font;
   font-weight: 600;
@@ -61,6 +76,7 @@
 
   @media (min-width: 768px) {
     font-size: 36px; // Change the font size for screens with a minimum width of 768px
+    text-align: center;
   }
 
   color: $light-gray;

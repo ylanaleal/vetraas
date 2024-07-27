@@ -8,10 +8,10 @@
     border-width: 1px;
     border-color: $bg-dark;
     border-radius: 8px;
-    padding: 12px;
+    padding: 24px;
 
     @media (min-width: 768px) {
-      width: 840px;
+      width: 640px;
     }
   }
 
@@ -50,12 +50,19 @@
     margin-top: 4px;
   }
 
+  .specialty p {
+    font-family: $body-font;
+    font-weight: 700;
+    color: $bg-dark;
+  }
+
   .btn-vet{
     font-family: $body-font;
     font-weight: 400;
     font-size: 14px;
     background-color: $bg-dark;
     width: 100%;
+    // margin-left: 58px;
     &:hover {
       background-color: #61687e;
     }

@@ -13,7 +13,7 @@
         <div class="container">
           <div class="row d-flex flex-row">
             <% @doctors.each do |doctor| %>
-              <div class="col-12 cards align-items-center justify-content-center mb-4 mx-auto my-auto">
+              <div class="col-12 cards align-items-center justify-content-center mb-5 mx-auto my-auto">
 
 
                   <div class="info-cards">
@@ -51,7 +51,7 @@
                       <% end %>
                     </div>
 
-                    <div>
+                    <div class="d-flex align-items-center justify-content-center">
                       <%# Link to schedule appoitment %>
                       <button class="btn-vet btn btn-dark rounded-4 mt-3" onclick='Calendly.showPopupWidget("https://calendly.com/vetraas-especialidades/<%= doctor.link_name %>");return false;'>
                         Agendar consulta
