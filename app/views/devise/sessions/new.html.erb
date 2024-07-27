@@ -4,7 +4,7 @@
     <p class="body">Faça login como <strong>administrador</strong>
   </div>
 
-  <div class="login">
+  <div class="login mb-5">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <%= f.input :email,

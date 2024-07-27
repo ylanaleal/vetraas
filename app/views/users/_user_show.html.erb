@@ -3,7 +3,7 @@
       <%# Checks if there's any doctor %>
       <% if @doctors %>
         <div class="container">
-          <div class="row d-flex flex-row">
+          <div class="row d-flex flex-column">
             <% @doctors.each do |doctor| %>
               <div class="col-12 cards align-items-center justify-content-center mb-4 mx-auto my-auto">
 
@@ -17,7 +17,7 @@
                     <% end %>
                     <%# Doctor header %>
                     <div class="d-flex">
-                      <h3><%= doctor.full_name %></h3>
+                      <h3>Dr(a). <%= doctor.full_name.upcase %></h3>
                       <%= link_to edit_doctor_path(doctor.id) do %>
                         <i class="icon fa-regular fa-pen-to-square ms-2 me-2"></i>
                       <% end %>
@@ -33,10 +33,9 @@
 
                   <%# Doctors new specialty %>
                   <%# <h4>Especialidades</h4> %>
-
                   <% if doctor.specialties != [] && doctor.specialties.count > 1 %>
                     <% doctor.specialties.each do |specialty| %>
-                      <div>
+                      <div class="mb-2">
                         <div class="d-flex align-items-center">
                           <p class="mb-0"><%= specialty.title %></p>
 

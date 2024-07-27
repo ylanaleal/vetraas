@@ -1,5 +1,5 @@
 <%# Form to add new doctor %>
-<div class="form mt-5">
+<div class="form my-5">
   <%= simple_form_for(@doctor) do |f| %>
     <div class="form-inputs scroll-form">
       <%= f.error_notification %>
@@ -11,7 +11,7 @@
       <%= f.input :description, label: 'Descrição do(a) veterinário(a)' %>
     </div>
 
-    <div class="form-actions mb-4">
+    <div class="form-actions">
       <% if controller_name == 'doctors' && action_name == 'edit' %>
         <%= f.submit "Salvar", class: "btn btn-dark shadow-sm rounded-3" %>
         <%= link_to 'Voltar', user_profile_path, class: "btn btn-dark shadow-sm rounded-3" %>
