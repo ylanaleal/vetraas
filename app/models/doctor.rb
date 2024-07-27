@@ -4,6 +4,7 @@ class Doctor < ApplicationRecord
   has_many :specialties, dependent: :destroy
 
   validates :first_name, :last_name, :description, presence: true
+  validates :description, length: { maximum: 300 }
 
   has_one_attached :photo
 
