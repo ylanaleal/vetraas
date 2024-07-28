@@ -12,6 +12,7 @@
     height: 30px;
   }
 
+
   .menu {
     padding-left: 40px;
     padding-right: 40px;
@@ -25,6 +26,21 @@
       justify-content: center;
     }
 
+    .show-btn-admin, .new-btn-admin {
+      color: $bg-dark;
+      text-decoration: none;
+      border: none;
+      background-color: $bg-color;
+      h2 {
+        &:hover {
+          color: #61687e !important;
+        }
+        &:active {
+          color: #61687e !important;
+        }
+      }
+    }
+
     h2 {
       font-family: $body-font;
       font-weight: 600;
@@ -32,22 +48,14 @@
       color: $gray;
 
       // Medium devices (tablets, 768px and up)
-    @media (min-width: 768px) {
-      font-size: 16px;
-      margin-right: 80px;
-      margin-left: 80px;
-    }
-    }
-
-    .btn-nodecoration {
-      text-decoration: none;
-      border: none;
-      background-color: $bg-color;
-      &:hover {
-        color: $bg-dark;
+      @media (min-width: 768px) {
+        font-size: 16px;
+        margin-right: 80px;
+        margin-left: 80px;
       }
     }
   }
+
 
   .form {
   padding-left: 40px;
