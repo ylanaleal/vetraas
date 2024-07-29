@@ -1,61 +1,70 @@
+<div class="container">
+
   <header>
-    <div class="home-title pt-4 mt-4">
+    <div class="home-title pt-3 mt-3">
       <h2 class="title">Bem-vindo!</h2>
       <p class="body">Agende sua consulta conosco, confira nossos <strong>profissionais</strong> e <strong>especialidades</strong></p>
     </div>
   </header>
 
   <main>
-    <div class="div-cards pt-3">
+    <div class="div-cards py-3">
       <% if @doctors %>
-        <div>
-          <% @doctors.each do |doctor| %>
-            <div class="cards">
+        <div class="container">
+          <div class="row d-flex flex-row">
+            <% @doctors.each do |doctor| %>
+              <div class="col-12 cards align-items-center justify-content-center mb-4 mx-auto my-auto">
 
-              <div class="info-cards">
-                <div class="photo-name d-flex align-items-center">
-                  <%# Doctor avatar %>
-                  <% if doctor.photo.attached? %>
-                    <%= cl_image_tag doctor.photo.key, crop: :fill, class: "avatar" %>
-                  <% else %>
-                    <%= image_tag "vetraas-logo.jpg", class: "avatar" %>
-                  <% end %>
 
-                  <div class="specialty d-flex flex-column ms-2">
-                    <%# Doctor header %>
-                    <h3 class="mb-0"><%= doctor.full_name %></h3>
+                  <div class="info-cards">
+                    <div class="photo-name d-flex align-items-center">
+                      <%# Doctor avatar %>
+                      <% if doctor.photo.attached? %>
+                        <%= cl_image_tag doctor.photo.key, crop: :fill, class: "avatar" %>
+                      <% else %>
+                        <%= image_tag "vetraas-logo.jpg", class: "avatar" %>
+                      <% end %>
 
-                    <%# Doctors specialties details %>
-                    <%# <h4>Especialidades</h4> %>
-                    <p class="mb-1"><%= doctor.specialties_join %></p>
-                  </div>
-                </div>
+                      <div class="specialty d-flex flex-column ms-2">
+                        <%# Doctor header %>
+                        <h3 class="mb-2">Dr(a). <%= doctor.full_name.upcase %></h3>
 
-                <div class="price mt-2">
-                  <% if doctor.specialties != [] && doctor.specialties.count > 1 %>
-                    <% doctor.specialties.each do |specialty| %>
-                        <p>Preço da consulta de <%= specialty.title %>: <%= specialty.formatted_value %></p>
-                    <% end %>
-                  <% elsif doctor.specialties != [] && doctor.specialties.count == 1 %>
-
-                    <div>
-                      <p>Preço da consulta: <%= doctor.specialties.first.formatted_value %></p>
+                        <%# Doctors specialties details %>
+                        <%# <h4>Especialidades</h4> %>
+                        <p class="mb-1"><%= doctor.specialties_join %></p>
+                      </div>
                     </div>
-                  <% end %>
-                </div>
 
-                <div>
-                  <%# Link to schedule appoitment %>
-                  <button class="btn-vet btn btn-dark rounded-4" onclick='Calendly.showPopupWidget("https://calendly.com/vetraas-especialidades/<%= doctor.link_name %>");return false;'>
-                    Agendar consulta
-                  </button>
+                    <div class="price mb-0 mt-3">
+                      <%# Doctor description %>
+                      <p class="mb-3 description"><%= doctor.description %></p>
 
-                </div>
+                      <% if doctor.specialties != [] && doctor.specialties.count > 1 %>
+                        <% doctor.specialties.each do |specialty| %>
+                            <p>Preço da consulta de <%= specialty.title %>: <%= specialty.formatted_value %></p>
+                        <% end %>
+                      <% elsif doctor.specialties != [] && doctor.specialties.count == 1 %>
+
+                        <div>
+                          <p>Preço da consulta: <%= doctor.specialties.first.formatted_value %></p>
+                        </div>
+                      <% end %>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-center">
+                      <%# Link to schedule appoitment %>
+                      <button class="btn-vet btn btn-dark rounded-4 mt-3" onclick='Calendly.showPopupWidget("https://calendly.com/vetraas-especialidades/<%= doctor.link_name %>");return false;'>
+                        Agendar consulta
+                      </button>
+                    </div>
+
+                  </div>
+
               </div>
-
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       <% end %>
     </div>
   </main>
+</div>

@@ -1,21 +1,22 @@
 <div data-controller="show-users">
   <!-- Options to admin -->
+
   <div class="menu d-flex mt-3">
-    <button class="btn-nodecoration" id="show-btn" data-action="click->show-users#show">
+    <button class="show-btn-admin" id="show-btn" data-action="click->show-users#show">
       <h2>Todos os profissionais</h2>
     </button>
 
-    <button class="btn-nodecoration" id="new-btn" data-action="click->show-users#new">
+    <button class="new-btn-admin" id="new-btn" data-action="click->show-users#new">
       <h2>Adicionar profissional</h2>
     </button>
   </div>
 
   <div data-show-users-target="newElement" class="d-none">
-    <%= render 'users/new', doctor: @doctor %>
+    <%= render 'new', doctor: @doctor %>
   </div>
 
   <div data-show-users-target="showElement">
-    <%= render 'users/user_show', doctors: @doctors %>
+    <%= render 'user_show', doctors: @doctors %>
   </div>
 
 </div>

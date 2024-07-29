@@ -11,7 +11,7 @@ class DoctorsController < ApplicationController
     if @doctor.save
       redirect_to new_specialty_path(@doctor), notice: 'Médico criado com sucesso.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -22,7 +22,7 @@ class DoctorsController < ApplicationController
     if @doctor.update(doctor_params)
       redirect_to user_profile_path, notice: 'Médico atualizado com sucesso.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

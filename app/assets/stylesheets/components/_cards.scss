@@ -1,6 +1,6 @@
 .div-cards {
-  padding-left: 40px;
-  padding-right: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
 
   .cards {
     background: transparent;
@@ -8,30 +8,37 @@
     border-width: 1px;
     border-color: $bg-dark;
     border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 20px;
+    padding: 24px;
+
+    @media (max-width: 540px) {
+      padding: 12px;
+    }
+    @media (min-width: 768px) {
+      width: 640px;
+    }
   }
 
   h3 {
     font-family: $title-font;
-    font-weight: 600;
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: 20px;
     color: $gray;
   }
 
   p {
     font-family: $body-font;
-    font-size: 0.70rem;
+    font-size: 14px;
     font-weight: 400;
     color: $gray;
   }
 
   .price p {
     font-family: $body-font;
-    font-size: 0.70rem;
+    font-size: 14px;
     font-weight: 400;
     color: $bg-dark;
     margin-left: 58px;
+    margin-bottom: 4px;
   }
 
   .avatar {
@@ -46,12 +53,19 @@
     margin-top: 4px;
   }
 
+  .specialty p {
+    font-family: $body-font;
+    font-weight: 700;
+    color: $bg-dark;
+  }
+
   .btn-vet{
     font-family: $body-font;
     font-weight: 400;
-    font-size: 0.80rem;
+    font-size: 14px;
     background-color: $bg-dark;
     width: 100%;
+    // margin-left: 58px;
     &:hover {
       background-color: #61687e;
     }
@@ -60,7 +74,7 @@
   .btn-vet-outline {
     font-family: $body-font;
     font-weight: 400;
-    font-size: 0.70rem;
+    font-size: 14px;
     background-color: $bg-color;
     &:hover {
       background-color: #61687e;
