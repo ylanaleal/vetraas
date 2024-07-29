@@ -11,13 +11,20 @@ doctor1 = Doctor.new(first_name: "Vivian", last_name: "Pedrinelli", description:
 doctor1.save!
 Specialty.create!(title: "Nutróloga", value: 400, doctor_id: doctor1.id)
 
+# Attach a photo to the doctor record from local file system
+doctor1.photo.attach(
+  io: File.open(Rails.root.join('app', 'assets', 'images', 'Vivian.jpg')),
+  filename: 'Vivian.jpg',
+  content_type: 'image/jpg'
+)
+
 # Gustavo Santoro
 doctor2 = Doctor.new(first_name: "Gustavo", last_name: "Santoro", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 doctor2.save!
 Specialty.create!(title: "Ortopedia, Artroscopia, Órteses, Prótese", value: 400, doctor_id: doctor2.id)
 
-# Caio Nogueira Duarte
-doctor3 = Doctor.new(first_name: "Caio", last_name: "Nogueira Duarte", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+# Caio Duarte
+doctor3 = Doctor.new(first_name: "Caio", last_name: "Duarte", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 doctor3.save!
 Specialty.create!(title: "Cardiologia", value: 400, doctor_id: doctor3.id)
 
@@ -32,8 +39,8 @@ doctor5 = Doctor.new(first_name: "Danielle", last_name: "Zanini", description: "
 doctor5.save!
 Specialty.create!(title: "Cirurgia Oncológica, Cirurgia de tecidos moles", value: 400, doctor_id: doctor5.id)
 
-# Helena Di Creddo
-doctor6 = Doctor.new(first_name: "Helena", last_name: "Di Creddo", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+# Helena Creddo
+doctor6 = Doctor.new(first_name: "Helena", last_name: "Creddo", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 doctor6.save!
 Specialty.create!(title: "Odontologia", value: 250, doctor_id: doctor6.id)
 
@@ -51,8 +58,8 @@ Specialty.create!(title: "Odontologia", value: 250, doctor_id: doctor6.id)
 # Specialty.create!(title: "Órteses", value: 400, doctor_id: doctor2.id)
 # Specialty.create!(title: "Prótese", value: 400, doctor_id: doctor2.id)
 
-# # Caio Nogueira Duarte
-# doctor3 = Doctor.new(first_name: "Caio", last_name: "Nogueira Duarte", description: lorem_ipsum(25))
+# # Caio Duarte
+# doctor3 = Doctor.new(first_name: "Caio", last_name: "Duarte", description: lorem_ipsum(25))
 # doctor3.save!
 # Specialty.create!(title: "Cardiologia", value: 400, doctor_id: doctor3.id)
 
@@ -71,7 +78,7 @@ Specialty.create!(title: "Odontologia", value: 250, doctor_id: doctor6.id)
 # Specialty.create!(title: "Cirurgia Oncológica", value: 400, doctor_id: doctor5.id)
 # Specialty.create!(title: "Cirurgia de tecidos moles", value: 400, doctor_id: doctor5.id)
 
-# # Helena Di Creddo
-# doctor6 = Doctor.new(first_name: "Helena", last_name: "Di Creddo", description: lorem_ipsum(25))
+# # Helena Creddo
+# doctor6 = Doctor.new(first_name: "Helena", last_name: "Creddo", description: lorem_ipsum(25))
 # doctor6.save!
 # Specialty.create!(title: "Odontologia", value: 250, doctor_id: doctor6.id)
